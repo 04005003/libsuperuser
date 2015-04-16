@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="eu.chainfire.libsuperuser_example"
+    package="uk.en.dis.ownapps"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -7,7 +7,7 @@
         android:minSdkVersion="4"
         android:targetSdkVersion="21" />
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
 
     <application
@@ -25,20 +25,6 @@
         <activity android:name="InteractiveActivity" >
         </activity>
 
-        <receiver android:name=".BootCompleteReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.HOME" />
-            </intent-filter>
-        </receiver>
-        
-        <receiver android:name=".HideOverlaysReceiver" >
-            <intent-filter>
-                <action android:name="eu.chainfire.supersu.action.HIDE_OVERLAYS" />
-                <category android:name="android.intent.category.INFO" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name=".BackgroundIntentService" />
+       
     </application>
 </manifest>

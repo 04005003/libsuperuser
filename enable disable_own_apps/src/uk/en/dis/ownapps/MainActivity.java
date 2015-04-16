@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eu.chainfire.libsuperuser_example;
+package uk.en.dis.ownapps;
 
 import java.util.List;
 

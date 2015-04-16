@@ -1,0 +1,39 @@
+1.0
+copied chainfires libsuperuser_example 
+
+renamed libsuperuser_example to (enable disable_own_apps) yh bit stupid but im tired had long day at work
+
+removed so and so from androidmanifest.xml
+1/
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+2/
+ <receiver android:name=".BootCompleteReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name=".HideOverlaysReceiver" >
+            <intent-filter>
+                <action android:name="eu.chainfire.supersu.action.HIDE_OVERLAYS" />
+                <category android:name="android.intent.category.INFO" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".BackgroundIntentService" />
+
+and deleted those class files 
+backgroundIntentReceiver.java
+BootCompleteReceiver.java
+hideOverlaysReceiver.java
+
+renamed app_name that is displayed in title bar named it hidden apps yawn so tired
+
+
+
+changed package name to uk.04005003.en.dis.ownapps
+ 
+ 
+ do more when i got chance. time to upload to github
+
