@@ -36,4 +36,20 @@ changed package name to uk.04005003.en.dis.ownapps
  
  
  do more when i got chance. time to upload to github
+ 
+ 
+ 
+ 
+ 
+ 
+ 1.1
+ version name changed to 1.1
+ 
+ deleted interactiveActivity.java and commented out button to load interactiveActivity as starting from scratch for mainActivity
+ deleted the whole thing in mainActivity.java apart from setContentView(R.layout.activity_main); that means thr loading grant process and implant my own later on
+ 
+added new command to load su dialog
+
+deleted buttons + scrollView in activityMain.xml that are shown when other developers test libsuperuser_example 
+added textview to show that app is active 
 
