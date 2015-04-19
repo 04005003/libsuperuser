@@ -53,3 +53,15 @@ added new command to load su dialog
 deleted buttons + scrollView in activityMain.xml that are shown when other developers test libsuperuser_example 
 added textview to show that app is active 
 
+
+1.1(renamed to 1.1.1)
+
+added two buttons enable+disable under app is active
+
+added pm enable and disable into the app this basically does what it says with whatever app u wana enable or disable without going through the apps that are installed on the device
+
+
+
+wow 2 things today think this version will be 1.1.1
+
+oh needed to add text on buttons

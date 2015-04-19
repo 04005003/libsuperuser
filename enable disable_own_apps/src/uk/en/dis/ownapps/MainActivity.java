@@ -16,47 +16,77 @@
 
 package uk.en.dis.ownapps;
 
+import android.*;
 import android.app.*;
 import android.os.*;
+import android.view.*;
+import android.widget.*;
 import eu.chainfire.libsuperuser.*;
 import java.util.*;
 
-public class MainActivity extends Activity 
-{		
+public class MainActivity extends Activity {		
+
+	Button enable_button, disable_button;
+
     @Override
-    public void onCreate(Bundle savedInstanceState)
-	{
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 		openSUDialog();
-    }
+		
+        //((Button)findViewById(R.id.enable_es)).
+		Button enable_button = (Button)findViewById(R.id.enable_es);
+		enable_button.setText("enable ES");//R.string.disable_es);
+        enable_button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				rootSession.addCommand(new String[]{
+					//this is ES file manager that packageNAME
+					"pm enable com.estrongs.android.pop.cupcake"
+				});
+				finish();
+			}
+		});
+	
+
+	
+
+		Button disable_button = (Button)findViewById(R.id.disable_es);
+        disable_button.setText("disable ES");//R.string.disable_es);
+        disable_button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				rootSession.addCommand(new String[]{
+					"pm disable com.estrongs.android.pop.cupcake",
+				});
+				finish();
+			}
+		});
+		
+		
+		
+	}
 	
 	private static Shell.Interactive rootSession;
-	private void reportError(String error)
-	{
+	private void reportError(String error){
 		List<String> errorInfo = new ArrayList<String>();
 		errorInfo.add(error);
 		rootSession = null;
 	}
-	private void openSUDialog()
-	{
-		if (rootSession != null)
-		{
+	private void openSUDialog(){
+		if (rootSession != null){
 			//SU();
-			rootSession.addCommand(new String[]
-			{
+			rootSession.addCommand(new String[]{
 				"su"
 			});
 		}
-		else
-		{
-			rootSession = new Shell.Builder().useSU().setWantSTDERR(true).setWatchdogTimeout(1).setMinimalLogging(true).open(new Shell.OnCommandResultListener()
-			{
+		else{
+			rootSession = new Shell.Builder().useSU().setWantSTDERR(true).setWatchdogTimeout(1).setMinimalLogging(true).open(new Shell.OnCommandResultListener(){
 				@Override
-				public void onCommandResult(int commandCode, int exitCode, List<String> output)
-				{ 
-				if (exitCode != Shell.OnCommandResultListener.SHELL_RUNNING){reportError("Error opening root shell: exitCode " + exitCode);
-				}
+				public void onCommandResult(int commandCode, int exitCode, List<String> output){ 
+					if (exitCode != Shell.OnCommandResultListener.SHELL_RUNNING){
+						reportError("Error opening root shell: exitCode " + exitCode);
+					}
 						//else {}
 				}
 			});
@@ -72,5 +102,21 @@ public class MainActivity extends Activity
 	
 	
 }
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
 
 
