@@ -1,3 +1,34 @@
+1.1.2
+added txtview to activity_main.xml and made three things horizontal like txt of package name and enable and disable button will take screenshots later of what it looks like
+added image for app that we are enabling or disabling that is load from the app itself so dont need to copy the image from that app itself
+added check if app is installed on device then load image from app and display text and buttons
+added proper label name that is shown on launcher 
+
+1.1.1(renamed to 1.1.1)
+
+added two buttons enable+disable under app is active
+
+added pm enable and disable into the app this basically does what it says with whatever app u wana enable or disable without going through the apps that are installed on the device
+
+
+
+wow 2 things today think this version will be 1.1.1
+
+oh needed to add text on buttons
+
+
+1.1
+ version name changed to 1.1
+ 
+ deleted interactiveActivity.java and commented out button to load interactiveActivity as starting from scratch for mainActivity
+ deleted the whole thing in mainActivity.java apart from setContentView(R.layout.activity_main); that means thr loading grant process and implant my own later on
+ 
+added new command to load su dialog
+
+deleted buttons + scrollView in activityMain.xml that are shown when other developers test libsuperuser_example 
+added textview to show that app is active 
+
+
 1.0
 copied chainfires libsuperuser_example 
 
@@ -42,26 +73,5 @@ changed package name to uk.04005003.en.dis.ownapps
  
  
  
- 1.1
- version name changed to 1.1
- 
- deleted interactiveActivity.java and commented out button to load interactiveActivity as starting from scratch for mainActivity
- deleted the whole thing in mainActivity.java apart from setContentView(R.layout.activity_main); that means thr loading grant process and implant my own later on
- 
-added new command to load su dialog
-
-deleted buttons + scrollView in activityMain.xml that are shown when other developers test libsuperuser_example 
-added textview to show that app is active 
 
 
-1.1(renamed to 1.1.1)
-
-added two buttons enable+disable under app is active
-
-added pm enable and disable into the app this basically does what it says with whatever app u wana enable or disable without going through the apps that are installed on the device
-
-
-
-wow 2 things today think this version will be 1.1.1
-
-oh needed to add text on buttons

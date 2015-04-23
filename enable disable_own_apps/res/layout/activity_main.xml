@@ -8,18 +8,38 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="dont worry this app is active"
+	/>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="horizontal" >
+	
+		<ImageView
+			android:id="@+id/es_icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+		/>
+		<TextView
+			android:id="@+id/esLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			/>
+			android:text=" "
+		/>
+		<Button
+			android:id="@+id/enable_es"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
 		/>
 	
-	<Button
-		android:id="@+id/enable_es"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		<Button
+			android:id="@+id/disable_es"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
 		/>
-	
-	<Button
-		android:id="@+id/disable_es"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		/>
-
+	</LinearLayout>
 </LinearLayout>
