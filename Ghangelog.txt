@@ -1,3 +1,5 @@
+been busy at work, updated cuple of things like theme some others but upload friday
+
 1.1.2
 added txtview to activity_main.xml and made three things horizontal like txt of package name and enable and disable button will take screenshots later of what it looks like
 added image for app that we are enabling or disabling that is load from the app itself so dont need to copy the image from that app itself
