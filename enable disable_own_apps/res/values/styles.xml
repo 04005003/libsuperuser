@@ -1,0 +1,129 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <!--<style name="AppBaseTheme" parent="android:Theme.Light">
+        
+         
+    </style>-->
+
+    <!-- Application theme. -->
+    <!--<style name="AppTheme" parent="AppBaseTheme">
+           </style>-->
+
+    <!-- Use the Android Dialog theme as the base for a new compound theme DialogNoTitle -->
+    <!-- Apply using attribute android:theme="@style/DialogNoTitle in manifest file for activity, -->
+    <!-- or setTheme(R.style.DialogNoTitle) before setContentView() in code. -->
+
+    <style name="DialogNoTitle" parent="@android:style/Theme.Dialog">
+
+        <!-- hide the Window Title -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/bgcolor</item>
+        <item name="android:colorBackground">@color/bgcolor</item>
+        <item name="android:textColor">@color/dialog_brown</item>
+    </style>
+
+    <style name="DialogNoTitleDark" parent="@android:style/Theme.Dialog">
+
+        <!-- hide the Window Title -->
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowBackground">@color/bgcolor2</item>
+        <item name="android:colorBackground">@color/bgcolor</item>
+        <item name="android:textColor">@color/buttontextcolor</item>
+    </style>
+
+	
+	
+	
+	
+	
+    <!-- Customize the Holo.Light theme -->
+
+
+    <!-- First define a custom ActionBar color -->
+
+    <style name="BrownActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/bar_brown</item>
+    </style>
+
+    <style name="GrayActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@color/bar_gray</item>
+    </style>
+
+	
+	
+	
+	
+	
+    <style name="HoloLightCustom" parent="@android:style/Theme.Holo.Light">
+        <!--<item name="android:windowBackground">
+			@color/bgcolor
+			</item>
+        <item name="android:colorBackground">
+			@color/bgcolor
+			</item>
+        <item name="android:actionBarStyle">
+			@style/BrownActionBar
+			</item>
+        <item name="android:textColor">
+			@color/bar_brown
+			</item>-->
+    </style>
+
+    <!-- Customize the Holo theme -->
+
+    <style name="HoloCustom" parent="@android:style/Theme.Holo">
+
+        <!-- <item name="android:windowNoTitle">true</item> -->
+        <!--<item name="android:windowBackground">@color/bgcolor2</item>
+        <item name="android:colorBackground">@color/bgcolor2</item>
+        <item name="android:actionBarStyle">@style/GrayActionBar</item>
+        <item name="android:textColor">@color/mainTextColor</item>-->
+    </style>
+	
+	
+	<!-- Customize the Holo theme -->
+
+    <style name="wallpaper" parent="Theme.AppCompat.Light.DarkActionBar">
+		@android:style/
+        <!-- <item name="android:windowNoTitle">true</item> -->
+        <!--<item name="android:windowBackground">@color/red</item>
+        <item name="android:colorBackground">@color/red</item>
+        <item name="android:actionBarStyle">@color/green</item>
+        <item name="android:textColor">@color/black</item>-->
+		
+		
+		
+		<!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@color/red</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/black</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated
+		which is used to tint widgets -->
+        <item name="colorAccent">@color/green</item>
+		
+		
+		<item name="android:windowTranslucentStatus">true</item>
+		<!--  <item name="android:windowTranslucentNavigation">true</item>-->
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+	
+	
+	
+	<style name="AppTheme" parent="AppTheme.Base"/>
+
+    <style name="AppTheme.Base" parent="@android:style/Theme.Holo">
+		parent="Theme.Holo.Light.DarkActionBar">
+		
+		</style>
+	
+	
+	
+	
+</resources>

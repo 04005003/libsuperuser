@@ -1,10 +1,12 @@
 package uk.en.dis.ownapps;
 
 import android.app.*;
+import android.content.*;
 import android.content.pm.*;
 import android.content.res.*;
 import android.graphics.drawable.*;
 import android.os.*;
+import android.preference.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
@@ -17,10 +19,23 @@ import java.util.*;
 public class MainActivity extends Activity {		
 
 	Button enable_button, disable_button;
-
+	
+	//theme change
+		public static final String TAG="THEMES";
+		private int currentTheme;
+		private int oldTheme;
+	
+	
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+		//theme change
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		String lister = sharedPref.getString("list_preference", "1");//1
+		oldTheme = Integer.parseInt(lister);
+
+			// Following options to change the Theme must precede setContentView().
+			toggleTheme();
         setContentView(R.layout.activity_main);
 		openSUDialog();
 		
@@ -52,6 +67,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		
 	}
 	
 	private static Shell.Interactive rootSession;
@@ -79,13 +95,7 @@ public class MainActivity extends Activity {
 			});
 		}
 	}
-	/*private void SU()
-	{
-		rootSession.addCommand(new String[]
-		{
-			"su"
-		});
-	}*/
+	
 	
 	private  void showESIcon (String apkPath) {
 		String PATH_PackageParser = "android.content.pm.PackageParser";
@@ -159,7 +169,6 @@ public class MainActivity extends Activity {
 	
 	public void loadESApp(){
 		new Handler().postDelayed(new Runnable(){
-			//this is wer it starts
 			//check
 			@Override
 			public void run(){
@@ -173,7 +182,6 @@ public class MainActivity extends Activity {
 				}
 				//end on check
 			}
-
 		},0);
 	}
 
@@ -181,7 +189,8 @@ public class MainActivity extends Activity {
 	{
 		try
 		{
-			ApplicationInfo info= getPackageManager().getApplicationInfo("com.estrongs.android.pop.cupcake", 0 );//-1
+			ApplicationInfo info= getPackageManager().getApplicationInfo(
+			"com.estrongs.android.pop.cupcake", 0 );//-1
 			return true;
 		}
 		catch(PackageManager.NameNotFoundException e ){
@@ -190,7 +199,92 @@ public class MainActivity extends Activity {
 			return false;
 		}
 	}
+	//added menu for preference screen
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	public boolean onOptionsItemSelected(MenuItem item){
+		super.onOptionsItemSelected(item);
+		switch(item.getItemId()){
+
+			case (R.id.help):
+			// Actions for Help page
+			/*Intent i = new Intent(this, Help.class);
+			startActivity(i);
+			return true;*/
+
+			case(R.id.about):
+			// Actions for About page
+			/*Intent k = new Intent(this, About.class);
+			startActivity(k);
+			return true;*/
+
+			case(R.id.prefs):
+			// Actions for preferences page
+			Intent j = new Intent(this, Prefs.class);
+			startActivity(j);
+			return true;
+
+			// Exit: not really needed because back button serves same function,
+			// but we include as illustration since some users may be more 
+			// comfortable with an explicit quit button.
+
+			case (R.id.quit):
+			finishUp();
+			return true;
+		}
+		return false;
+	}
+
+	//change theme
+	@Override
+	public void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	public void onResume(){
+		super.onResume();
+		toggleTheme();
+	}
+	private void toggleTheme()
+	{
+		// Following options to change the Theme must precede setContentView().
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
+		String lister = sharedPref.getString("list_preference", "1");
 
 
+		currentTheme = Integer.parseInt(lister);
+		if(currentTheme == 1 )
+		{
+			setTheme(R.style.HoloLightCustom);
+		}
+		else if(currentTheme == 2){
+			setTheme(R.style.HoloCustom);
+		}
+		else if(currentTheme == 3){
+			setTheme(R.style.wallpaper);
+		}
+
+		if(oldTheme != currentTheme){
+
+			oldTheme = currentTheme;
+
+			Intent k = new Intent(this, MainActivity.class);
+			k.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(k);
+		}
+	}
+
+	public void finishUp(){
+		finish();
+	}
+		
+	
 
 }
+

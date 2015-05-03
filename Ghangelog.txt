@@ -1,3 +1,17 @@
+future updates
+A lock screen so its harder to get into the app
+few more apps within enable/disable app
+might add material design like for app (new 5.0 lollipop version feature)
+add dark or light theme (done)
+add color change
+
+
+
+1.1.3
+added settings to change theme of app
+added holo black theme, holo light and another one for material design bit not yet added
+added menu to load settings and quit app
+
 1.1.2
 added txtview to activity_main.xml and made three things horizontal like txt of package name and enable and disable button will take screenshots later of what it looks like
 added image for app that we are enabling or disabling that is load from the app itself so dont need to copy the image from that app itself
