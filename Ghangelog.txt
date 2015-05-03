@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 future updates
 A lock screen so its harder to get into the app
 few more apps within enable/disable app
@@ -11,6 +12,9 @@ add color change
 added settings to change theme of app
 added holo black theme, holo light and another one for material design bit not yet added
 added menu to load settings and quit app
+=======
+been busy at work, updated cuple of things like theme some others but upload friday
+>>>>>>> branch 'master' of https://github.com/04005003/libsuperuser.git
 
 1.1.2
 added txtview to activity_main.xml and made three things horizontal like txt of package name and enable and disable button will take screenshots later of what it looks like
