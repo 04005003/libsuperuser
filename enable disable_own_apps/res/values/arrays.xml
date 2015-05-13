@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="labels_list_preference">
+    <string-array name="themes_list_preference">
         <item>Custom Holo Light</item>
         <item>Custom Holo Dark</item>
-		<item>test</item>-->
+		<item>material blue</item>-->
+		<item>material red</item>-->
+		<item>material pink</item>-->
     </string-array>
     
     <string-array name="values_list_preference">
         <item>1</item>
         <item>2</item>
-		<item>3</item>-->
+		<item>3</item>
+		<item>4</item>-->
+		<item>5</item>-->
     </string-array>
 	
-
+	
+	
+	
+	
 </resources>

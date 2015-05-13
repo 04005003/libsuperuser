@@ -2,8 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+	android:fitsSystemWindows="false"
+	>
+		<!--<FrameLayout
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="?attr/colorPrimary"/>
+		android:visibility="visible"
+		/>-->
 
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >-->
     <TextView
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -42,4 +55,5 @@
 			android:layout_weight="1"
 		/>
 	</LinearLayout>
+	<!--</ScrollView>-->
 </LinearLayout>

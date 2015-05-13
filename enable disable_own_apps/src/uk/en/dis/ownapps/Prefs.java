@@ -5,7 +5,7 @@ package uk.en.dis.ownapps;
 import android.os.*;
 import android.preference.*;
 import android.preference.PreferenceFragment;
-//import android.preference.PreferenceManager;
+import android.preference.PreferenceManager;
 
 
 

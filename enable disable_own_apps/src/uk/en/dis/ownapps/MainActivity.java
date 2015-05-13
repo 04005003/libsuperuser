@@ -1,12 +1,12 @@
 package uk.en.dis.ownapps;
 
-import android.app.*;
 import android.content.*;
 import android.content.pm.*;
 import android.content.res.*;
 import android.graphics.drawable.*;
 import android.os.*;
 import android.preference.*;
+import android.support.v7.app.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
@@ -14,61 +14,62 @@ import eu.chainfire.libsuperuser.*;
 import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
+import android.app.*;
+
+import android.content.Intent;
+import android.os.Build;
+//import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+//import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 
-public class MainActivity extends Activity {		
+public class MainActivity extends Activity 
+{		
 
 	Button enable_button, disable_button;
 	
 	//theme change
-		public static final String TAG="THEMES";
+		//public static final String TAG="THEMES";
 		private int currentTheme;
 		private int oldTheme;
-	
-	
+	//
+	//material color
+		//private int oldMaterialColor;
+		//private int currentMaterialcolor;
+	//
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-		//theme change
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-		String lister = sharedPref.getString("list_preference", "1");//1
-		oldTheme = Integer.parseInt(lister);
-
+			//theme change in prefs
+			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+			String lister = sharedPref.getString("theme_preference", "1");//1
+			oldTheme = Integer.parseInt(lister);
 			// Following options to change the Theme must precede setContentView().
 			toggleTheme();
+			//
+			//material color
+			//SharedPreferences sharedPref2 = PreferenceManager.getDefaultSharedPreferences(this);
+			//String lister2 = sharedPref.getString("material_preference", "1");//1
+			//oldMaterialColor = Integer.parseInt(lister2);
+			//toggleColor();
+			//
         setContentView(R.layout.activity_main);
 		openSUDialog();
 		
 		loadESApp();
-		
-        //((Button)findViewById(R.id.enable_es)).
-		Button enable_button = (Button)findViewById(R.id.enable_es);
-		enable_button.setText("enable");//R.string.disable_es);
-        enable_button.setOnClickListener(new View.OnClickListener(){
-			@Override
-			public void onClick(View v) {
-				rootSession.addCommand(new String[]{
-					//this is ES file manager that packageNAME
-					"pm enable com.estrongs.android.pop.cupcake"
-				});
-				finish();
-			}
-		});
-	
-		Button disable_button = (Button)findViewById(R.id.disable_es);
-        disable_button.setText("disable");//R.string.disable_es);
-        disable_button.setOnClickListener(new View.OnClickListener(){
-			@Override
-			public void onClick(View v) {
-				rootSession.addCommand(new String[]{
-					"pm disable com.estrongs.android.pop.cupcake",
-				});
-				finish();
-			}
-		});
-		
-		
+		esEnableButton();
+		esDisableButton();
 	}
+	
+	
+//	superuser grant dialog
 	
 	private static Shell.Interactive rootSession;
 	private void reportError(String error){
@@ -78,7 +79,6 @@ public class MainActivity extends Activity {
 	}
 	private void openSUDialog(){
 		if (rootSession != null){
-			//SU();
 			rootSession.addCommand(new String[]{
 				"su"
 			});
@@ -95,7 +95,37 @@ public class MainActivity extends Activity {
 			});
 		}
 	}
+// end superuser grant dialog
 	
+	//es file manager
+	private void esEnableButton(){
+			//((Button)findViewById(R.id.enable_es)).
+			Button enable_button = (Button)findViewById(R.id.enable_es);
+			enable_button.setText("enable");//R.string.disable_es);
+			enable_button.setOnClickListener(new View.OnClickListener(){
+						@Override
+						public void onClick(View v) {
+								rootSession.addCommand(new String[]{
+															   //this is ES file manager that packageNAME
+															   "pm enable com.estrongs.android.pop.cupcake"
+														   });
+								finish();
+							}
+					});
+	}
+	private void esDisableButton(){
+			Button disable_button = (Button)findViewById(R.id.disable_es);
+			disable_button.setText("disable");//R.string.disable_es);
+			disable_button.setOnClickListener(new View.OnClickListener(){
+						@Override
+						public void onClick(View v) {
+								rootSession.addCommand(new String[]{
+															   "pm disable com.estrongs.android.pop.cupcake",
+														   });
+								finish();
+							}
+					});
+	}
 	
 	private  void showESIcon (String apkPath) {
 		String PATH_PackageParser = "android.content.pm.PackageParser";
@@ -199,6 +229,9 @@ public class MainActivity extends Activity {
 			return false;
 		}
 	}
+	//end es file manager 
+	
+	
 	//added menu for preference screen
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -228,10 +261,6 @@ public class MainActivity extends Activity {
 			startActivity(j);
 			return true;
 
-			// Exit: not really needed because back button serves same function,
-			// but we include as illustration since some users may be more 
-			// comfortable with an explicit quit button.
-
 			case (R.id.quit):
 			finishUp();
 			return true;
@@ -249,27 +278,66 @@ public class MainActivity extends Activity {
 	public void onResume(){
 		super.onResume();
 		toggleTheme();
+		//toggleColor();
 	}
-	private void toggleTheme()
+	public void toggleTheme()
 	{
 		// Following options to change the Theme must precede setContentView().
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
-		String lister = sharedPref.getString("list_preference", "1");
+		String lister = sharedPref.getString("theme_preference", "1");
+
 
 
 		currentTheme = Integer.parseInt(lister);
 		if(currentTheme == 1 )
 		{
 			setTheme(R.style.HoloLightCustom);
+			//setContentView(R.layout.activity_main);
+			//openSUDialog();
+			//loadESApp();
+			//esEnableButton();
+			//esDisableButton();
+			//listpref();
 		}
 		else if(currentTheme == 2){
 			setTheme(R.style.HoloCustom);
+				//setContentView(R.layout.activity_main);
+				//openSUDialog();
+				//loadESApp();
+				//esEnableButton();
+				//esDisableButton();
+				//listpref();
 		}
 		else if(currentTheme == 3){
 			setTheme(R.style.wallpaper);
+				setContentView(R.layout.activity_main2);
+				loadESApp();
+				esEnableButton();
+				esDisableButton();
+				/*if(Build.VERSION.SDK_INT < 19){
+						FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
+						ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
+						layoutParams.height = 0;
+					}
+				if(Build.VERSION.SDK_INT >= 21){
+						getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);;
+					}		*/
 		}
-
+		else if(currentTheme == 4){
+				setTheme(R.style.wallpaperRed);
+				setContentView(R.layout.activity_main2);
+				loadESApp();
+				esEnableButton();
+				esDisableButton();
+			}
+		else if(currentTheme == 5){
+				setTheme(R.style.wallpaperPink);
+				setContentView(R.layout.activity_main2);
+				loadESApp();
+				esEnableButton();
+				esDisableButton();
+			}
 		if(oldTheme != currentTheme){
 
 			oldTheme = currentTheme;
@@ -279,7 +347,45 @@ public class MainActivity extends Activity {
 			startActivity(k);
 		}
 	}
+	//added color change on material design
+	/*public void toggleColor(){
+			SharedPreferences sharedPref2 = PreferenceManager.getDefaultSharedPreferences(this);
 
+			String lister2 = sharedPref2.getString("material_preference", "1");
+
+
+
+			currentMaterialcolor = Integer.parseInt(lister2);
+			if(currentMaterialcolor == 1 )
+				{
+					setTheme(R.style.wallpaper);
+					
+					//setContentView(R.layout.activity_main);
+					//openSUDialog();
+					//loadESApp();
+					//esEnableButton();
+					//esDisableButton();
+					//listpref();
+				}
+			else if(currentMaterialcolor == 2){
+					setTheme(R.style.ActionBarRed);
+					//setContentView(R.layout.activity_main);
+					//openSUDialog();
+					//loadESApp();
+					//esEnableButton();
+					//esDisableButton();
+					//listpref();
+				}
+			
+			if(oldMaterialColor != currentMaterialcolor){
+
+					oldMaterialColor = currentMaterialcolor;
+
+					Intent k = new Intent(this, MainActivity.class);
+					k.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(k);
+				}
+	}*/
 	public void finishUp(){
 		finish();
 	}
@@ -287,4 +393,3 @@ public class MainActivity extends Activity {
 	
 
 }
-
