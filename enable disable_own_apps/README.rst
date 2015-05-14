@@ -16,4 +16,4 @@ Sodino sodinoopen@hotmail.com for example of loading app icon
 
 screen shots
 
-![screenshot](https://raw.githubusercontent.com/04005003/libsuperuser/master/enable%20disable_own_apps/1.1.2.png "screenshot")
+![screenshot](https://raw.github.com/04005003/libsuperuser/master/enable%20disable_own_apps/1.1.2.png "screenshot")
