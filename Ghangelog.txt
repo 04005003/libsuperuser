@@ -16,6 +16,11 @@ might add material design like for app (new 5.0 lollipop version feature) etc ad
 add dark or light theme (done)
 add color change (done couple maybe add custom color) for this added color preference by Daniel Nilsson into the app project (done)
 
+
+1.1.6
+test screenshot of app in readme.rst 
+added test of layout-v19 = android 4.4 with read color wich is the actionbar color chooser,
+(works just need to see if works on lollipop and jellbean n gingerbread)
 1.1.5
 added color change on action bar woop woop
 

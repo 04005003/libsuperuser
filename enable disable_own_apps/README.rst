@@ -12,3 +12,8 @@ chainfire for libsuperuser_example source code
 aide for programming the app
 Sodino sodinoopen@hotmail.com for example of loading app icon
 
+
+
+screen shots
+
+https://raw.githubusercontent.com/04005003/libsuperuser/master/enable%20disable_own_apps/1.1.2.png
