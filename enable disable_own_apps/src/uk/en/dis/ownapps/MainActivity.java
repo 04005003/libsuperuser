@@ -6,7 +6,7 @@ import android.content.res.*;
 import android.graphics.drawable.*;
 import android.os.*;
 import android.preference.*;
-import android.support.v7.app.*;
+//import android.support.v7.app.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
@@ -30,20 +30,27 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 
+//custom color
+import afzkl.development.colorpickerview.view.ColorPanelView;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+
+
 public class MainActivity extends Activity 
 {		
-
+    //es file manager
 	Button enable_button, disable_button;
-	
+	//
 	//theme change
-		//public static final String TAG="THEMES";
 		private int currentTheme;
 		private int oldTheme;
 	//
-	//material color
-		//private int oldMaterialColor;
-		//private int currentMaterialcolor;
-	//
+	//custom color
+		private ColorPanelView			
+		mOldColorPanelView;
+		//
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -51,15 +58,17 @@ public class MainActivity extends Activity
 			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 			String lister = sharedPref.getString("theme_preference", "1");//1
 			oldTheme = Integer.parseInt(lister);
+			//custom color
+			/*SharedPreferences color = PreferenceManager.getDefaultSharedPreferences(this);
+			int initialColor = color.getInt("color_3", 0xFF000000);
+			mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
+			mOldColorPanelView.setColor(initialColor);*/
+			
+			//
 			// Following options to change the Theme must precede setContentView().
 			toggleTheme();
 			//
-			//material color
-			//SharedPreferences sharedPref2 = PreferenceManager.getDefaultSharedPreferences(this);
-			//String lister2 = sharedPref.getString("material_preference", "1");//1
-			//oldMaterialColor = Integer.parseInt(lister2);
-			//toggleColor();
-			//
+			
         setContentView(R.layout.activity_main);
 		openSUDialog();
 		
@@ -245,13 +254,13 @@ public class MainActivity extends Activity
 
 			case (R.id.help):
 			// Actions for Help page
-			/*Intent i = new Intent(this, Help.class);
+			Intent i = new Intent(this, ColorPickerActivity.class);
 			startActivity(i);
-			return true;*/
+			return true;
 
-			case(R.id.about):
+			/*case(R.id.about):
 			// Actions for About page
-			/*Intent k = new Intent(this, About.class);
+			Intent k = new Intent(this, readcolor.class);
 			startActivity(k);
 			return true;*/
 
@@ -338,6 +347,17 @@ public class MainActivity extends Activity
 				esEnableButton();
 				esDisableButton();
 			}
+			//custom color
+		else if(currentTheme == 6){
+				setTheme(R.style.wallpaper2);
+				setContentView(R.layout.readcolor);
+				loadESApp();
+				init();
+				esEnableButton();
+				esDisableButton();
+				
+			}
+		
 		if(oldTheme != currentTheme){
 
 			oldTheme = currentTheme;
@@ -345,47 +365,19 @@ public class MainActivity extends Activity
 			Intent k = new Intent(this, MainActivity.class);
 			k.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(k);
+				//Intent m = new Intent(this, Prefs.class);
+				//m.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		}
 	}
-	//added color change on material design
-	/*public void toggleColor(){
-			SharedPreferences sharedPref2 = PreferenceManager.getDefaultSharedPreferences(this);
-
-			String lister2 = sharedPref2.getString("material_preference", "1");
-
-
-
-			currentMaterialcolor = Integer.parseInt(lister2);
-			if(currentMaterialcolor == 1 )
-				{
-					setTheme(R.style.wallpaper);
-					
-					//setContentView(R.layout.activity_main);
-					//openSUDialog();
-					//loadESApp();
-					//esEnableButton();
-					//esDisableButton();
-					//listpref();
-				}
-			else if(currentMaterialcolor == 2){
-					setTheme(R.style.ActionBarRed);
-					//setContentView(R.layout.activity_main);
-					//openSUDialog();
-					//loadESApp();
-					//esEnableButton();
-					//esDisableButton();
-					//listpref();
-				}
-			
-			if(oldMaterialColor != currentMaterialcolor){
-
-					oldMaterialColor = currentMaterialcolor;
-
-					Intent k = new Intent(this, MainActivity.class);
-					k.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					startActivity(k);
-				}
-	}*/
+	//custom color
+	public void init(){
+			SharedPreferences color = PreferenceManager.getDefaultSharedPreferences(this);
+			int initialColor = color.getInt("color_3", 
+											0xFF000000
+											);
+			mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
+			mOldColorPanelView.setColor(initialColor);
+	}
 	public void finishUp(){
 		finish();
 	}

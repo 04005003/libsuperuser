@@ -157,17 +157,22 @@
 	<style name="ActionBarPink" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/md_pink_500</item>
     </style>
-		
-		
-	<!-- Base application theme. -->
-   <!-- <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-       
-        <item name="colorPrimary">@color/md_indigo_500</item>
-        <item name="colorPrimaryDark">@color/md_indigo_700</item>
-    </style>-->
-    <!--<style name="AppTheme3" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/md_red_500</item>
-        <item name="colorPrimaryDark">@color/md_red_700</item>
-    </style>-->
+	
+	
+	
+	<!--added for custom color-->
+	<style name="wallpaper2" parent="@android:Theme.Holo.Light">
+		<item name="android:windowTranslucentStatus">true</item>-->
+		<!--  <item name="android:windowTranslucentNavigation">true</item>-->
+       <!-- <item name="android:fitsSystemWindows">true</item>-->
+		<!--<item name="colorPrimary">@color/md_indigo_500</item>-->
+        <!--<item name="colorPrimaryDark">@color/md_indigo_700</item>-->
+		<item name="android:actionBarStyle">@style/ActionBar2</item>-->
+    </style>
+	<style name="ActionBar2" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/none</item>-->
+    </style>
+	
+	
 	
 </resources>

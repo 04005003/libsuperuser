@@ -5,11 +5,11 @@
         android:orderInCategory="0"
         android:showAsAction="ifRoom"
         android:title="help"/>
-    <item
+   <!-- <item
         android:id="@+id/about"
         android:orderInCategory="5"
         android:showAsAction="ifRoom"
-        android:title="about"/>
+        android:title="about"/>-->
     <item
         android:id="@+id/prefs"
         android:orderInCategory="10"

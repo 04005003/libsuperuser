@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+	xmlns:picker="http://schemas.android.com/apk/res/uk.en.dis.ownapps" >
 
     <PreferenceCategory android:title="Application Preferences" >
 
@@ -12,16 +13,7 @@
 			android:defaultValue="1"
 			/>
 		
-		<!--<ListPreference
-            android:dialogTitle="material design bg"
-            android:entries="@array/material_list_preference"
-            android:entryValues="@array/value_material_preference"
-            android:key="material_preference"
-            android:summary="Set material color"
-            android:title="material Preference"
-			android:defaultValue="1"
-		/>-->
     </PreferenceCategory>
 	
-
+	
 </PreferenceScreen>

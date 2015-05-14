@@ -14,8 +14,10 @@ A lock screen so its harder to get into the app
 few more apps within enable/disable app
 might add material design like for app (new 5.0 lollipop version feature) etc add Theme.Material.Light
 add dark or light theme (done)
-add color change (done couple maybe add custom color) for this added color preference by Daniel Nilsson into the app project
+add color change (done couple maybe add custom color) for this added color preference by Daniel Nilsson into the app project (done)
 
+1.1.5
+added color change on action bar woop woop
 
 1.1.4
 added material design on android 4.4 and 5.0 without using appcompat gona test on 5.0
