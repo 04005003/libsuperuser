@@ -12,29 +12,44 @@
         android:layout_height="72dp">
         android:layout_weight="1">
         android:padding="16dp" >
-
+		
 		<afzkl.development.colorpickerview.view.ColorPanelView
 			android:id="@id/color_panel_old"
 			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"/>
+			android:layout_height="fill_parent"/>-->
 		android:layout_weight="0.5" />
 		android:layout_width="0px"
-
+		<!--this is like darker transparent bar that is like in 5.0-->
+		<FrameLayout
+			android:layout_height="25dp"
+			android:layout_width="fill_parent"
+			android:background="#1f000000"/>
 	</RelativeLayout>-->
-    <!--<ScrollView
+    <ScrollView
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
+	android:layout_height="match_parent">
+	android:scrollbarThumbVertical="@drawable/scroll"
+	>
+		android:orientation="vertical" >
+	>
 	android:id="@+id/scrollView" >-->
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical" >
     <TextView
 		android:layout_width="fill_parent"
-
+		android:textColor="#ffffff"
 		android:layout_height="wrap_content"
 		android:text="v19 test "
+		android:shadowColor="#000000"
+		android:shadowRadius="0.7"
 	/>
 	android:paddingTop="50dp"
+		
 	<LinearLayout
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
+		android:layout_height="wrap_content"
 		android:orientation="horizontal" >
 
 		<ImageView
@@ -42,9 +57,51 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
+			android:visibility="gone"
 		/>
 		<TextView
 			android:id="@+id/esLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:visibility="gone"
+		/>
+		android:text=" "
+		/>
+		<Button
+			android:id="@+id/enable_es"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:visibility="gone"
+		/>
+
+		<Button
+			android:id="@+id/disable_es"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:visibility="gone"
+		/>
+	</LinearLayout>
+	
+	
+	
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
+
+		<ImageButton
+			android:id="@+id/fb_icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@+color/none"
+			
+		/>
+		<TextView
+			android:id="@+id/fbLabel"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
@@ -65,5 +122,12 @@
 			android:layout_weight="1"
 		/>
 	</LinearLayout>
-	<!--</ScrollView>-->
+			<TextView
+				android:text="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+			/>
+		</LinearLayout>
+	</ScrollView>
 </LinearLayout>

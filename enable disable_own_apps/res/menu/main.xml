@@ -4,7 +4,9 @@
         android:id="@+id/help"
         android:orderInCategory="0"
         android:showAsAction="ifRoom"
-        android:title="help"/>
+        android:title="help"
+		android:icon="@drawable/ic_action_drawing_dark"
+		/>
    <!-- <item
         android:id="@+id/about"
         android:orderInCategory="5"

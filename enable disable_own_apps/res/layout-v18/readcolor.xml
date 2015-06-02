@@ -25,6 +25,16 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:id="@+id/scrollView" >-->
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		android:orientation="vertical" >
+		>
+		android:id="@+id/scrollView" >-->
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical" >
     <TextView
 		android:layout_width="fill_parent"
 
@@ -65,5 +75,44 @@
 			android:layout_weight="1"
 		/>
 	</LinearLayout>
+	
+
+	<!--fb icon-->
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
+
+		<ImageButton
+			android:id="@+id/fb_icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@+color/none"
+		/>
+		<TextView
+			android:id="@+id/fbLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+		/>
+		android:text=" "
+		/>
+		<Button
+			android:id="@+id/enable_es"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+		/>
+
+		<Button
+			android:id="@+id/disable_es"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+		/>
+	</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
 	<!--</ScrollView>-->
 </LinearLayout>

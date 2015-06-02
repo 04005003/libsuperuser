@@ -1,12 +1,13 @@
 package uk.en.dis.ownapps;
 
+import afzkl.development.colorpickerview.view.*;
+import android.app.*;
 import android.content.*;
 import android.content.pm.*;
 import android.content.res.*;
 import android.graphics.drawable.*;
 import android.os.*;
 import android.preference.*;
-//import android.support.v7.app.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
@@ -14,28 +15,6 @@ import eu.chainfire.libsuperuser.*;
 import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
-import android.app.*;
-
-import android.content.Intent;
-import android.os.Build;
-//import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-//import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
-
-
-//custom color
-import afzkl.development.colorpickerview.view.ColorPanelView;
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 
 public class MainActivity extends Activity 
@@ -43,6 +22,7 @@ public class MainActivity extends Activity
     //es file manager
 	Button enable_button, disable_button;
 	//
+	ImageButton load_fb;
 	//theme change
 		private int currentTheme;
 		private int oldTheme;
@@ -58,23 +38,10 @@ public class MainActivity extends Activity
 			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 			String lister = sharedPref.getString("theme_preference", "1");//1
 			oldTheme = Integer.parseInt(lister);
-			//custom color
-			/*SharedPreferences color = PreferenceManager.getDefaultSharedPreferences(this);
-			int initialColor = color.getInt("color_3", 0xFF000000);
-			mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
-			mOldColorPanelView.setColor(initialColor);*/
-			
-			//
 			// Following options to change the Theme must precede setContentView().
 			toggleTheme();
 			//
-			
-        setContentView(R.layout.activity_main);
-		openSUDialog();
-		
-		loadESApp();
-		esEnableButton();
-		esDisableButton();
+			openSUDialog();
 	}
 	
 	
@@ -105,36 +72,120 @@ public class MainActivity extends Activity
 		}
 	}
 // end superuser grant dialog
+	// load apps from here
+	public void loadCustomApps()// change to loadCustomApps //changed from loadESApp as can add more checks into this
+	{
+		new Handler().postDelayed(new Runnable()
+		{
+			//check if app is on phone
+			@Override
+			public void run(){
+				//added on check if on device
+				if(checkes() == true){
+					showESIcon("/data/app/com.estrongs.android.pop.cupcake-1.apk");
+				}
+				else {//=false
+
+				}
+				if(checkfb() == true){
+						showFbIcon("/data/app/com.facebook.katana-1.apk");
+				}
+				else{
+					
+				}
+				//end on check
+			}
+		},0);
+	}
+	public boolean checkes()
+	{
+		try
+		{
+			ApplicationInfo info= getPackageManager().getApplicationInfo(
+			"com.estrongs.android.pop.cupcake", 0 );//-1
+			
+//			Intent intent = new Intent(this, MainActivity.class);
+//			//startActivity(j);
+//			String pkgName = intent.getData().getSchemeSpecificPart();
+//			PackageManager pm = getPackageManager();
+//			if(pkgName.equals("com.estrongs.android.pop.cupcake")){
+//					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT){
+//							Log.i("xixia", "default");
+//                        }
+//					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED){
+//							Log.i("xixia", "enabled");
+//                        }
+//					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED){
+//							Log.i("xixia", "disabled");
+//                        }
+//					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER){
+//							Log.i("xixia", "disabled-user");
+//                        }
+//                }
+			
+			
+			
+			/*ApplicationInfo ai = 
+			getPackageManager().getApplicationInfo("your_package",0);*/
+
+			//boolean appStatus = info.enabled;
+			//boolean appStatus = ai.disabled;
+			
+			//add next app same as above but different package
+			//application facebook
+			//ApplicationInfo fb= getPackageManager().getApplicationInfo(
+			//"com.facebook.katana",0);//com.facebook.katana.platform.FacebookAuthenticationActivity
+			
+			/*String pkgName = intent.getData().getSchemeSpecificPart();
+            PackageManager pm = getLauncher().getPackageManager();
+			if(pkgName.equals("com.jiawa.xixia")){
+					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT){
+							Log.i("xixia", "default");
+                        }
+					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED){
+							Log.i("xixia", "enabled");
+                        }
+					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED){
+							Log.i("xixia", "disabled");
+                        }
+					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER){
+							Log.i("xixia", "disabled-user");
+                        }
+                }*/
+			return true;
+
+		}
+		
+		catch(PackageManager.NameNotFoundException e ){
+			//ApplicationInfo info= getPackageManager().getApplicationInfo("test.paint", 0 );
+			return false;
+			
+		}
+		
+	}
 	
+	public boolean checkfb()
+	{
+		try
+		{
+			//ApplicationInfo info= getPackageManager().getApplicationInfo(
+			//"com.estrongs.android.pop.cupcake", 0 );//-1
+			//add next app same as above but different package
+			//application facebook
+			ApplicationInfo fb= getPackageManager().getApplicationInfo(
+			"com.facebook.katana",0);//com.facebook.katana.platform.FacebookAuthenticationActivity
+			return true;
+
+		}
+
+		catch(PackageManager.NameNotFoundException e ){
+			//ApplicationInfo info= getPackageManager().getApplicationInfo("test.paint", 0 );
+			return false;
+		}
+	}
+	//
 	//es file manager
-	private void esEnableButton(){
-			//((Button)findViewById(R.id.enable_es)).
-			Button enable_button = (Button)findViewById(R.id.enable_es);
-			enable_button.setText("enable");//R.string.disable_es);
-			enable_button.setOnClickListener(new View.OnClickListener(){
-						@Override
-						public void onClick(View v) {
-								rootSession.addCommand(new String[]{
-															   //this is ES file manager that packageNAME
-															   "pm enable com.estrongs.android.pop.cupcake"
-														   });
-								finish();
-							}
-					});
-	}
-	private void esDisableButton(){
-			Button disable_button = (Button)findViewById(R.id.disable_es);
-			disable_button.setText("disable");//R.string.disable_es);
-			disable_button.setOnClickListener(new View.OnClickListener(){
-						@Override
-						public void onClick(View v) {
-								rootSession.addCommand(new String[]{
-															   "pm disable com.estrongs.android.pop.cupcake",
-														   });
-								finish();
-							}
-					});
-	}
+	
 	
 	private  void showESIcon (String apkPath) {
 		String PATH_PackageParser = "android.content.pm.PackageParser";
@@ -187,18 +238,77 @@ public class MainActivity extends Activity
 			 label = res.getText (info.labelRes);
 			 TextView estext = (TextView) findViewById(R.id.esLabel);
 			 estext.setText(" "+ label);
+					 estext.setVisibility (View.VISIBLE);
 			 }
-			 if(label== null){   
+			 //fink dont beed as its localisation 
+			/* if(label== null){   
 			 label = (info.nonLocalizedLabel!= null)?
 			 info.nonLocalizedLabel:
 			 info.packageName;
-			 }   
+			 }   */
 			 //this displays app icon that were using 
 			if (info.icon!= 0) {
 				Drawable icon = res.getDrawable (info.icon);
 				ImageView image = (ImageView) findViewById (R.id.es_icon);
 				image.setVisibility (View.VISIBLE);
 				image.setImageDrawable (icon);
+				image.setOnClickListener(new View.OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						Intent fbload = new Intent
+						(Intent.ACTION_MAIN);
+						fbload.setComponent(new ComponentName(//"com.facebook.katana","com.facebook.katana.platform.FacebookAuthenticationActivity"
+						 "com.estrongs.android.pop.cupcake","com.estrongs.android.pop.cupcake.view.FileExplorerActivity"
+						));
+						startActivity(fbload);
+					}
+				});
+				
+				//removed esbuttons and placed them here to show if app is installed
+					Button enable_button = (Button)findViewById(R.id.enable_es);
+					enable_button.setText("enable");//R.string.disable_es);
+					enable_button.setVisibility (View.VISIBLE);
+					enable_button.setOnClickListener(new View.OnClickListener(){
+								@Override
+								public void onClick(View v) {
+										/*PackageManager manager = getPackageManager();
+
+										 //SharedPreferences.Editor edit = sp.edit();
+										 //edit.putBoolean("integralLauncher", true);
+										 manager.setComponentEnabledSetting(new ComponentName(MainActivity.this,"com.estrongs.android.pop.cupcake.view.FileExplorerActivity"), 
+										 PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+										 */
+										rootSession.addCommand(new String[]{
+																	   //this is ES file manager that packageNAME
+																	   "pm enable com.estrongs.android.pop.cupcake"
+																   });
+										//finish();// tgis is my test for my gif image 
+									}
+							});
+					Button disable_button = (Button)findViewById(R.id.disable_es);
+					disable_button.setVisibility (View.VISIBLE);
+					disable_button.setText("disable");//R.string.disable_es);
+					disable_button.setOnClickListener(new View.OnClickListener(){
+								@Override
+								public void onClick(View v) {
+										/*PackageManager manager = getPackageManager();
+
+										 //SharedPreferences.Editor edit = sp.edit();
+
+										 //edit.putBoolean("integralLauncher", true);
+
+										 //edit.putBoolean("integralLauncher", false);
+										 manager.setComponentEnabledSetting(new ComponentName(MainActivity.this,"com.estrongs.android.pop.cupcake.view.FileExplorerActivity"),
+										 PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);//, PackageManager.DONT_KILL_APP);
+										 */
+										rootSession.addCommand(new String[]{
+																	   "pm disable com.estrongs.android.pop.cupcake"
+																   });
+										//finish();
+									}
+							});
+				
+				
 			}
 		}
 		catch(Exception e) {
@@ -206,40 +316,121 @@ public class MainActivity extends Activity
 		}
 	}
 	
-	public void loadESApp(){
-		new Handler().postDelayed(new Runnable(){
-			//check
-			@Override
-			public void run(){
-				//added on check if on device
-				if(check() == true){
-					//finish();
-					showESIcon("/data/app/com.estrongs.android.pop.cupcake-1.apk");
-				}
-				else {//=false
-				
-				}
-				//end on check
-			}
-		},0);
-	}
-
-	public boolean check()
-	{
-		try
-		{
-			ApplicationInfo info= getPackageManager().getApplicationInfo(
-			"com.estrongs.android.pop.cupcake", 0 );//-1
-			return true;
-		}
-		catch(PackageManager.NameNotFoundException e ){
-			//ApplicationInfo info= getPackageManager().getApplicationInfo("test.paint", 0 );
-
-			return false;
-		}
-	}
 	//end es file manager 
-	
+	//load fackebook icon n label
+		private  void showFbIcon (String apkPath) {
+				String PATH_PackageParser = "android.content.pm.PackageParser";
+				String PATH_AssetManager = "android.content.res.AssetManager";
+				try {
+						Class pkgParserCls = Class.forName(PATH_PackageParser);
+						Class [] typeArgs = new Class [1];
+						typeArgs [0] = String.class;
+						Constructor pkgParserCt = pkgParserCls.getConstructor(typeArgs);
+						Object [] valueArgs = new Object [1];
+						valueArgs [0] = apkPath;
+						Object pkgParser = pkgParserCt.newInstance(valueArgs);   
+						DisplayMetrics metrics = new DisplayMetrics();
+						metrics.setToDefaults();
+						typeArgs = new Class [4]; typeArgs [0] = File.class; typeArgs [1] = String.class; typeArgs [2] = DisplayMetrics.class; typeArgs [3] = Integer.TYPE;
+						Method pkgParser_parsePackageMtd = pkgParserCls.getDeclaredMethod("parsePackage", typeArgs);
+						valueArgs = new Object [4];
+						valueArgs [0] = new File (apkPath);
+						valueArgs [1] = apkPath;
+						valueArgs [2] = metrics;
+						valueArgs [3] = 0;
+						Object pkgParserPkg = pkgParser_parsePackageMtd.invoke(pkgParser, valueArgs);
+						Field appInfoFld = pkgParserPkg.getClass().getDeclaredField("applicationInfo");
+						ApplicationInfo info = (ApplicationInfo) appInfoFld.get(pkgParserPkg);
+
+						Class assetMagCls = Class.forName(PATH_AssetManager);
+						Constructor assetMagCt = assetMagCls.getConstructor((Class []) null);
+						Object assetMag = assetMagCt.newInstance((Object []) null);
+						typeArgs = new Class [1];
+						typeArgs [0] = String.class;
+						Method assetMag_addAssetPathMtd = assetMagCls.getDeclaredMethod("addAssetPath", typeArgs);
+						valueArgs = new Object [1];
+						valueArgs [0] = apkPath;
+						assetMag_addAssetPathMtd.invoke(assetMag, valueArgs);
+						Resources res = getResources();
+						typeArgs = new Class [3];
+						typeArgs [0] = assetMag.getClass ();
+						typeArgs [1] = res.getDisplayMetrics ().getClass ();
+						typeArgs [2] = res.getConfiguration ().getClass ();
+						Constructor resCt = Resources.class.getConstructor(typeArgs); //Class
+
+						valueArgs = new Object [3];
+						valueArgs [0] = assetMag;
+						valueArgs [1] = res.getDisplayMetrics ();
+						valueArgs [2] = res.getConfiguration ();
+						res = (Resources) resCt.newInstance(valueArgs);
+						// this displays our apps label name that is shown in launcher
+						CharSequence label = null;
+						if (info.labelRes!= 0) {
+								label = res.getText (info.labelRes);
+								TextView estext = (TextView) findViewById(R.id.fbLabel);
+								estext.setText(" "+ label);
+							}
+						/*if(label== null){   
+								label = (info.nonLocalizedLabel!= null)?
+									info.nonLocalizedLabel:
+									info.packageName;
+							}   */
+						//this displays app icon that were using 
+						if (info.icon!= 0) {
+								Drawable icon = res.getDrawable (info.icon);
+								//ImageView image = (ImageView) findViewById (R.id.fb_icon);
+								ImageButton image = (ImageButton) findViewById (R.id.fb_icon);
+								image.setVisibility (View.VISIBLE);
+								image.setImageDrawable (icon);
+								image.setOnClickListener(new View.OnClickListener(){
+									@Override
+									public void onClick(View v) {
+										/*ActionBar actionBar = getActionBar();
+										actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);//, ActionBar.DISPLAY_USE_LOGO); 
+										actionBar.setDisplayShowTitleEnabled(true); 
+										actionBar.setDisplayUseLogoEnabled(false);	
+										actionBar.setDisplayHomeAsUpEnabled(false); 
+										actionBar.setTitle("test");*/
+										Intent fbload = new Intent
+										(Intent.ACTION_MAIN);
+											fbload.setComponent(new ComponentName("com.facebook.katana","com.facebook.katana.platform.FacebookAuthenticationActivity"));
+											startActivity(fbload);
+									}
+								});
+							}
+					}
+				catch(Exception e) {
+						e.printStackTrace ();
+					}
+			}
+		/*public void FBButtons(){
+				//((Button)findViewById(R.id.enable_fb)).
+				Button enable_button = (Button)findViewById(R.id.enable_fb);
+				enable_button.setText("enable");//R.string.disable_es);
+				enable_button.setOnClickListener(new View.OnClickListener(){
+							@Override
+							public void onClick(View v) {
+									rootSession.addCommand(new String[]{
+																   //this is ES file manager that packageNAME
+																""  // "pm enable com.estrongs.android.pop.cupcake"
+															   });
+									finish();// tgis is my test for my gif image 
+								}
+						});
+				Button disable_button = (Button)findViewById(R.id.disable_fb);
+				disable_button.setText("disable");//R.string.disable_fb);
+				disable_button.setOnClickListener(new View.OnClickListener(){
+							@Override
+							public void onClick(View v) {
+									rootSession.addCommand(new String[]{
+																  // "pm disable com.estrongs.android.pop.cupcake",
+																   ""
+															   });
+									finish();
+								}
+						});
+			}*/
+	//end of facebook
 	
 	//added menu for preference screen
 	@Override
@@ -260,7 +451,7 @@ public class MainActivity extends Activity
 
 			/*case(R.id.about):
 			// Actions for About page
-			Intent k = new Intent(this, readcolor.class);
+			Intent k = new Intent(this, Options.class);
 			startActivity(k);
 			return true;*/
 
@@ -271,7 +462,11 @@ public class MainActivity extends Activity
 			return true;
 
 			case (R.id.quit):
-			finishUp();
+					/*ActionBar actionBar = getActionBar();
+					actionBar.hide();*/
+					/*ActionBar actionBar = getActionBar();
+					actionBar.show();*/
+			//finishUp();
 			return true;
 		}
 		return false;
@@ -287,7 +482,6 @@ public class MainActivity extends Activity
 	public void onResume(){
 		super.onResume();
 		toggleTheme();
-		//toggleColor();
 	}
 	public void toggleTheme()
 	{
@@ -297,7 +491,6 @@ public class MainActivity extends Activity
 		String lister = sharedPref.getString("theme_preference", "1");
 
 
-
 		currentTheme = Integer.parseInt(lister);
 		if(currentTheme == 1 )
 		{
@@ -305,25 +498,23 @@ public class MainActivity extends Activity
 			//setContentView(R.layout.activity_main);
 			//openSUDialog();
 			//loadESApp();
-			//esEnableButton();
-			//esDisableButton();
 			//listpref();
+			setContentView(R.layout.activity_main);
+			
+
+			loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
 		}
 		else if(currentTheme == 2){
 			setTheme(R.style.HoloCustom);
-				//setContentView(R.layout.activity_main);
-				//openSUDialog();
-				//loadESApp();
-				//esEnableButton();
-				//esDisableButton();
-				//listpref();
+				setContentView(R.layout.activity_main);
+
+
+				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
 		}
 		else if(currentTheme == 3){
 			setTheme(R.style.wallpaper);
-				setContentView(R.layout.activity_main2);
-				loadESApp();
-				esEnableButton();
-				esDisableButton();
+			setContentView(R.layout.activity_main2);
+				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
 				/*if(Build.VERSION.SDK_INT < 19){
 						FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
 						ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
@@ -336,27 +527,32 @@ public class MainActivity extends Activity
 		else if(currentTheme == 4){
 				setTheme(R.style.wallpaperRed);
 				setContentView(R.layout.activity_main2);
-				loadESApp();
-				esEnableButton();
-				esDisableButton();
-			}
+				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
+		}
 		else if(currentTheme == 5){
 				setTheme(R.style.wallpaperPink);
 				setContentView(R.layout.activity_main2);
-				loadESApp();
-				esEnableButton();
-				esDisableButton();
-			}
-			//custom color
+				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
+		}
+		//custom color theme
 		else if(currentTheme == 6){
 				setTheme(R.style.wallpaper2);
 				setContentView(R.layout.readcolor);
-				loadESApp();
-				init();
-				esEnableButton();
-				esDisableButton();
+				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
+				//init();
+				// added the custom colorview bit 
+				SharedPreferences color = PreferenceManager.getDefaultSharedPreferences(this);
+				int initialColor = color.getInt("color_3", 0xFF000000 );
+				mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
+				mOldColorPanelView.setColor(initialColor);
 				
-			}
+				ActionBar actionBar = getActionBar();
+				actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);//, ActionBar.DISPLAY_USE_LOGO); 
+				actionBar.setDisplayShowTitleEnabled(true); 
+				actionBar.setDisplayUseLogoEnabled(false);	
+				actionBar.setDisplayHomeAsUpEnabled(false); 
+				actionBar.setTitle("Hidden apps");
+		}
 		
 		if(oldTheme != currentTheme){
 
@@ -369,19 +565,11 @@ public class MainActivity extends Activity
 				//m.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		}
 	}
-	//custom color
-	public void init(){
-			SharedPreferences color = PreferenceManager.getDefaultSharedPreferences(this);
-			int initialColor = color.getInt("color_3", 
-											0xFF000000
-											);
-			mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
-			mOldColorPanelView.setColor(initialColor);
-	}
 	public void finishUp(){
 		finish();
 	}
-		
 	
-
+	
+	
+	
 }

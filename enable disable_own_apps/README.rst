@@ -11,6 +11,7 @@ credits goes to
 chainfire for libsuperuser_example source code 
 aide for programming the app
 Sodino sodinoopen@hotmail.com for example of loading app icon
+android sdk for material design and there sdks
 
 
 

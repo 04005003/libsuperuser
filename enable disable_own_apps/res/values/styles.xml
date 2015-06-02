@@ -36,6 +36,11 @@
 
     <style name="GrayActionBar" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:background">@color/bar_gray</item>
+		<item name="android:shadowColor">@color/black</item>
+		android:shadowRadius="10.9"
+		android:shadowDx="0.8"
+		android:shadowDy="1.0"
+		android:typeface="monospace"/>
     </style>
 
 	
@@ -174,5 +179,10 @@
     </style>
 	
 	
+	
+	
+	<style name="Dialog" parent="@android:Theme.Holo.Dialog">
+		<item name="android:windowNoTitle">true</item>
+    </style>
 	
 </resources>

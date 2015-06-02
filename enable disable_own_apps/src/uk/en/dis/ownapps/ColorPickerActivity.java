@@ -1,19 +1,15 @@
 package uk.en.dis.ownapps;
 
-import afzkl.development.colorpickerview.view.ColorPanelView;
-import afzkl.development.colorpickerview.view.ColorPickerView;
-import afzkl.development.colorpickerview.view.ColorPickerView.OnColorChangedListener;
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.graphics.PixelFormat;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-
-import android.util.Log;
-import android.widget.Toast;
+import afzkl.development.colorpickerview.view.*;
+import afzkl.development.colorpickerview.view.ColorPickerView.*;
+import android.app.*;
+import android.content.*;
+import android.graphics.*;
+import android.os.*;
+import android.preference.*;
+import android.util.*;
+import android.view.*;
+import android.widget.*;
 
 public class ColorPickerActivity extends Activity implements OnColorChangedListener, View.OnClickListener {
 
@@ -36,7 +32,6 @@ public class ColorPickerActivity extends Activity implements OnColorChangedListe
 		setContentView(R.layout.activity_color_picker);
 		
 		init();
-		
 	}
 	
 	private void init() {
