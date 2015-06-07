@@ -7,7 +7,9 @@ sony xperia sp version 5.0
 samsung galaxy 4.4
 sony xperia m2 4.3
 
-
+***************************NOTE**********************************************
+--------that this is only viewable on android kitkat-------------------------
++++sorting out other versions later on after all ideas are done++++++++++++++
 
 future updates
 A lock screen so its harder to get into the app (working on it)
@@ -17,8 +19,16 @@ add dark or light theme (done)
 add color change (done couple maybe add custom color) for this added color preference by Daniel Nilsson into the app project (done)
 add custom actionbar for drawer that im making 
 sort out all code to fit for all os as just wana release more stuff
-add custom action bar
 instead of button gona add checkbox as its not worth having buttons if you dont know if it is already disabled/ enabled.
+then add greyscale image so it looks like its disabled
+
+1.1.9
+considering removing fb as i havent implanted updates to it but add it back once finished 
+added checkbox to all layouts in res for enable and disable
+added save and loadPreference for checkbox
+removed buttons for enabling/disalbling es filemanager
+added table layout as having relative or linear makes the text, image and checkbox to close together
+changed image of icon from wrap_content to 50dp just incase app icon that we will use later on shows bigger 
 
 1.1.8
 removed icon for material design like with color picker so it looks more like material for android lollipop
