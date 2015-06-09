@@ -1,55 +1,4 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-   
-
-    <style name="DialogNoTitle" parent="@android:style/Theme.Dialog">
-
-        <!-- hide the Window Title -->
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/bgcolor</item>
-        <item name="android:colorBackground">@color/bgcolor</item>
-        <item name="android:textColor">@color/dialog_brown</item>
-    </style>
-
-    <style name="DialogNoTitleDark" parent="@android:style/Theme.Dialog">
-
-        <!-- hide the Window Title -->
-        <item name="android:windowNoTitle">false</item>
-        <item name="android:windowBackground">@color/bgcolor2</item>
-        <item name="android:colorBackground">@color/bgcolor</item>
-        <item name="android:textColor">@color/buttontextcolor</item>
-    </style>
-
-	
-	
-	
-	
-	
-    <!-- Customize the Holo.Light theme -->
-
-
-    <!-- First define a custom ActionBar color -->
-
-    <style name="BrownActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/bar_brown</item>
-    </style>
-
-    <style name="GrayActionBar" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@color/bar_gray</item>
-		<item name="android:shadowColor">@color/black</item>
-		android:shadowRadius="10.9"
-		android:shadowDx="0.8"
-		android:shadowDy="1.0"
-		android:typeface="monospace"/>
-    </style>
-
-	
-	
-	
-	
-	
-	
-	
 	<style name="AppTheme" parent="AppTheme.Base"/>
 
     <style name="AppTheme.Base" parent="@android:style/Theme.Holo">
@@ -63,19 +12,6 @@
 	
 	
     <style name="HoloLightCustom" parent="@android:style/Theme.Holo.Light">
-		parent="@android:style/Theme.Holo.Light">
-        <!--<item name="android:windowBackground">
-			@color/bgcolor
-			</item>
-        <item name="android:colorBackground">
-			@color/bgcolor
-			</item>
-        <item name="android:actionBarStyle">
-			@style/BrownActionBar
-			</item>
-        <item name="android:textColor">
-			@color/bar_brown
-			</item>-->
     </style>
 
 	
@@ -94,77 +30,7 @@
 	
 	
 	<!-- Customize the Holo theme -->
-
-    <style name="wallpaper" parent="@android:Theme.Holo.Light">
-		.Holo
-		parent="@android:Theme.Holo.Light">.DarkActionBar">
-		parent="Theme.AppCompat.Light.DarkActionBar">
-		@android:style/
-        <!-- <item name="android:windowNoTitle">true</item> -->
-      <!--  <item name="android:windowBackground">@color/red</item>
-        <item name="android:colorBackground">@color/red</item>
-        <item name="android:actionBarStyle">@color/green</item>
-        <item name="android:textColor">@color/black</item>-->
 		
-		
-		
-		<!-- colorPrimary is used for the default action bar background 
-        <item name="colorPrimary">@color/red</item>-->
-
-        <!-- colorPrimaryDark is used for the status bar 
-        <item name="colorPrimaryDark">@color/black</item>-->
-		<item name="android:windowTranslucentStatus">true</item>-->
-		<!--  <item name="android:windowTranslucentNavigation">true</item>-->
-        <item name="android:fitsSystemWindows">true</item>-->
-		<item name="colorPrimary">@color/md_indigo_500</item>
-        <item name="colorPrimaryDark">@color/md_indigo_700</item>
-		<item name="android:actionBarStyle">@style/ActionBar</item>-->
-		<!--<item name="framelaout">true</item>-->
-    </style>
-
-	
-	
-
-	<style name="ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/md_indigo_500</item>
-		
-        <!--<item name="android:backgroundStacked">@color/stacked_green</item>
-        <item name="android:backgroundSplit">@color/sa_green</item>-->
-    </style>
-	
-	
-	
-	
-	<style name="wallpaperRed" parent="@android:Theme.Holo.Light">
-	
-		<item name="android:windowTranslucentStatus">true</item>-->
-		<!--  <item name="android:windowTranslucentNavigation">true</item>-->
-        <item name="android:fitsSystemWindows">true</item>-->
-		<item name="colorPrimary">@color/md_red_500</item>
-        <item name="colorPrimaryDark">@color/md_red_700</item>
-		<item name="android:actionBarStyle">@style/ActionBarRed</item>-->
-		<!--<item name="framelaout">true</item>-->
-    </style>
-	<style name="ActionBarRed" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/md_red_500</item>
-    </style>
-		
-	<style name="wallpaperPink" parent="@android:Theme.Holo.Light">
-
-		<item name="android:windowTranslucentStatus">true</item>-->
-		<!--  <item name="android:windowTranslucentNavigation">true</item>-->
-        <item name="android:fitsSystemWindows">true</item>-->
-		<item name="colorPrimary">@color/md_pink_500</item>-->
-        <item name="colorPrimaryDark">@color/md_pink_700</item>-->
-		<item name="android:actionBarStyle">@style/ActionBarPink</item>-->
-		<!--<item name="framelaout">true</item>-->
-    </style>
-	<style name="ActionBarPink" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/md_pink_500</item>
-    </style>
-	
-	
-	
 	<!--added for custom color-->
 	<style name="wallpaper2" parent="@android:Theme.Holo.Light">
 		<item name="android:windowTranslucentStatus">true</item>-->
@@ -183,6 +49,10 @@
 	
 	<style name="Dialog" parent="@android:Theme.Holo.Dialog">
 		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowIsFloating">true</item>  
+		<item name="android:windowCloseOnTouchOutside">false</item>  
+		<item name="android:colorBackgroundCacheHint">@null</item>  
+		<item name="android:backgroundDimEnabled">false</item>
     </style>
 	
 </resources>

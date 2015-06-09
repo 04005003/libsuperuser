@@ -19,8 +19,15 @@ add dark or light theme (done)
 add color change (done couple maybe add custom color) for this added color preference by Daniel Nilsson into the app project (done)
 add custom actionbar for drawer that im making 
 sort out all code to fit for all os as just wana release more stuff
-instead of button gona add checkbox as its not worth having buttons if you dont know if it is already disabled/ enabled.
-then add greyscale image so it looks like its disabled
+instead of button gona add checkbox as its not worth having buttons if you dont know if it is already disabled/ enabled. (done)
+then add greyscale image so it looks like its disabled (done)
+proguard the app if i can using aide
+
+
+1.2.0
+removed unwanted codes that are commented-out 
+removed v7 appcompact.jar now the app size is 392kb instead of 2.**mb hehe (lets see if i can make it smaller)
+added custom actionbar 
 
 1.1.9
 considering removing fb as i havent implanted updates to it but add it back once finished 

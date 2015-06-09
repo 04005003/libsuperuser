@@ -104,9 +104,9 @@ public class MainActivity extends Activity //implements View.OnClickListener
 				if(checkes() == true){
 					showESIcon("/data/app/com.estrongs.android.pop.cupcake-1.apk");
 				}
-				else {//=false
+				/*else {//=false
 
-				}
+				}*/
 				if(checkfb() == true){
 						showFbIcon("/data/app/com.facebook.katana-1.apk");
 				}
@@ -123,64 +123,13 @@ public class MainActivity extends Activity //implements View.OnClickListener
 		{
 			ApplicationInfo info= getPackageManager().getApplicationInfo("com.estrongs.android.pop.cupcake", 0 );{
 				
-			}//;//-1
-			
-//			Intent intent = new Intent(this, MainActivity.class);
-//			//startActivity(j);
-//			String pkgName = intent.getData().getSchemeSpecificPart();
-//			PackageManager pm = getPackageManager();
-//			if(pkgName.equals("com.estrongs.android.pop.cupcake")){
-//					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT){
-//							Log.i("xixia", "default");
-//                        }
-//					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED){
-//							Log.i("xixia", "enabled");
-//                        }
-//					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED){
-//							Log.i("xixia", "disabled");
-//                        }
-//					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER){
-//							Log.i("xixia", "disabled-user");
-//                        }
-//                }
-			
-			
-			
-			/*ApplicationInfo ai = 
-			getPackageManager().getApplicationInfo("your_package",0);*/
-
-			//boolean appStatus = info.enabled;
-			//boolean appStatus = ai.disabled;
-			
-			//add next app same as above but different package
-			//application facebook
-			//ApplicationInfo fb= getPackageManager().getApplicationInfo(
-			//"com.facebook.katana",0);//com.facebook.katana.platform.FacebookAuthenticationActivity
-			
-			/*String pkgName = intent.getData().getSchemeSpecificPart();
-            PackageManager pm = getLauncher().getPackageManager();
-			if(pkgName.equals("com.jiawa.xixia")){
-					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT){
-							Log.i("xixia", "default");
-                        }
-					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED){
-							Log.i("xixia", "enabled");
-                        }
-					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED){
-							Log.i("xixia", "disabled");
-                        }
-					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER){
-							Log.i("xixia", "disabled-user");
-                        }
-                }*/
+			}
 			return true;
-
 		}
 		
 		catch(PackageManager.NameNotFoundException e ){
 			//ApplicationInfo info= getPackageManager().getApplicationInfo("test.paint", 0 );
 			return false;
-			
 		}
 		
 	}
@@ -188,8 +137,6 @@ public class MainActivity extends Activity //implements View.OnClickListener
 	
 	//
 	//es file manager
-	
-	
 	private  void showESIcon (String apkPath) 
 	{
 		String PATH_PackageParser = "android.content.pm.PackageParser";
@@ -268,36 +215,31 @@ public class MainActivity extends Activity //implements View.OnClickListener
 						startActivity(fbload);
 					}
 				});*/
-					//PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 				es_box=(CheckBox)findViewById(R.id.checkEs);
-				//es_box.setOnClickListener(this);
 				es_box.setVisibility (View.VISIBLE);
 				es_box.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-					/*if(CompoundButton buttonView, boolean isChecked)
-					{
-						
-					}
-					else{
-						
-					}*/
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 						if(es_box.isChecked()){
-							Toast.makeText(getApplicationContext(), "disabled es", Toast.LENGTH_SHORT).show();
+							//Toast.makeText(getApplicationContext(), "disabled es", Toast.LENGTH_SHORT).show();
 								rootSession.addCommand(new String[]{
 									"pm disable com.estrongs.android.pop.cupcake"
 								});
+								//added color on enbled n disabled image when checkbox is clicked
 								disabledColor();
+								//
 							savePreferences("CheckBox", es_box.isChecked());
 								
 						}
 						else{
-							Toast.makeText(getApplicationContext(), "enabled es", Toast.LENGTH_SHORT).show();
+							//Toast.makeText(getApplicationContext(), "enabled es", Toast.LENGTH_SHORT).show();
 								rootSession.addCommand(new String[]{
 									//this is ES file manager that packageNAME
 										"pm enable com.estrongs.android.pop.cupcake"
 								});
+								//added color on enbled n disabled image when checkbox is clicked
 								enabledColor();
+								//
 							savePreferences("CheckBox", es_box.isChecked());
 								//Drawable icon = res.getDrawable (info.icon);
 								/*ImageView image = (ImageView) findViewById (R.id.es_icon);
@@ -487,10 +429,6 @@ public class MainActivity extends Activity //implements View.OnClickListener
 			return true;
 
 			case (R.id.quit):
-					/*ActionBar actionBar = getActionBar();
-					actionBar.hide();*/
-					/*ActionBar actionBar = getActionBar();
-					actionBar.show();*/
 			//finishUp();
 			return true;
 		}
@@ -544,31 +482,8 @@ public class MainActivity extends Activity //implements View.OnClickListener
 
 				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
 		}
-		else if(currentTheme == 3){
-			setTheme(R.style.wallpaper);
-			setContentView(R.layout.activity_main2);
-				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
-				/*if(Build.VERSION.SDK_INT < 19){
-						FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
-						ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
-						layoutParams.height = 0;
-					}
-				if(Build.VERSION.SDK_INT >= 21){
-						getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);;
-					}		*/
-		}
-		else if(currentTheme == 4){
-				setTheme(R.style.wallpaperRed);
-				setContentView(R.layout.activity_main2);
-				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
-		}
-		else if(currentTheme == 5){
-				setTheme(R.style.wallpaperPink);
-				setContentView(R.layout.activity_main2);
-				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
-		}
 		//custom color theme
-		else if(currentTheme == 6){
+		else if(currentTheme == 3){
 				setTheme(R.style.wallpaper2);
 				setContentView(R.layout.readcolor);
 				loadCustomApps();//changed from loadEsApp//changing to loadCustomApps();
@@ -579,78 +494,34 @@ public class MainActivity extends Activity //implements View.OnClickListener
 				mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
 				mOldColorPanelView.setColor(initialColor);
 				
-				ActionBar actionBar = getActionBar();
+				/*ActionBar actionBar = getActionBar();
 				actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);//, ActionBar.DISPLAY_USE_LOGO); 
 				actionBar.setDisplayShowTitleEnabled(true); 
 				actionBar.setDisplayUseLogoEnabled(false);	
-				actionBar.setDisplayHomeAsUpEnabled(false); 
-				actionBar.setTitle("Hidden apps");
+				actionBar.setDisplayHomeAsUpEnabled(false); */
+				//actionBar.setTitle("Hidden apps");
 				
 				
+				ActionBar mActionBar = getActionBar();
+				mActionBar.setDisplayShowHomeEnabled(false);
+				mActionBar.setDisplayShowTitleEnabled(false);
+				LayoutInflater mInflater = LayoutInflater.from(this);
+
+				View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+				TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+				mTitleTextView.setText("My Own Title");
+
+				ImageButton imageButton = (ImageButton) mCustomView.findViewById(R.id.imageButton);
 				
-				//getPackageManager().getApplicationEnabledSetting( "com.estrongs.android.pop.cupcake" ) ==
-				//getPackageManager().COMPONENT_ENABLED_STATE_DISABLED)
-				
-				
-				
-				
-				//Intent intent = new Intent(this, MainActivity.class);
-			//startActivity(j);
-			/*String pkgName = intent.getData().getSchemeSpecificPart();
-			PackageManager pm = getPackageManager();
-			if(pkgName.equals("com.estrongs.android.pop.cupcake")){
-					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT){
-							Log.i("xixia", "default");
-                        }
-					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED){
-							Log.i("xixia", "enabled");
-                        }
-					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED){
-							Log.i("xixia", "disabled");
-                        }
-					if(pm.getApplicationEnabledSetting(pkgName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER){
-							Log.i("xixia", "disabled-user");
-                        }
+				imageButton.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Toast.makeText(getApplicationContext(), "Refresh Clicked!",Toast.LENGTH_LONG).show();
+					}
+				});
 
-						}*/
-				
-				
-				//disable ...
-
-
-				/*PackageManager pm = _context.getApplicationContext() .getPackageManager();
-
-
-				//... disable ...
-				pm.setComponentEnabledSetting(new ComponentName(
-												  "com.xda.yourpackage",
-												  "com.xda.yourpackage.StartAcitvity"),
-											  PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-											  PackageManager.DONT_KILL_APP);
-
-				//... enable ..
-				pm.setComponentEnabledSetting(new ComponentName(
-												  "com.xda.yourpackage",
-												  "com.xda.yourpackage.StartAcitvity"),
-											  PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-											  PackageManager.DONT_KILL_APP);
-
-
-
-
-
-
-				//................................. to validae if ist visible ...
-				ComponentName componentName = new ComponentName(
-					"com.xda.yourpackage",
-					"com.xda.yourpackage.StartAcitvity");
-
-				if (pm.getComponentEnabledSetting(componentName) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
-						return true;
-					} else {
-						return false;
-					}*/
-				
+				mActionBar.setCustomView(mCustomView);
+				mActionBar.setDisplayShowCustomEnabled(true);
 				
 				
 		}
@@ -675,11 +546,16 @@ public class MainActivity extends Activity //implements View.OnClickListener
 		SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this);
 		boolean  cbValue= sp.getBoolean("CheckBox", false);
 		if(cbValue){
-				disabledColor();
+			//added color on enbled n disabled image when checkbox is clicked
+			disabledColor();
+			//
 			es_box.setChecked(true);
+				
 		}
 		else{
+				//added color on enbled n disabled image when checkbox is clicked
 			enabledColor();
+			//
 			es_box.setChecked(false);
 		}
 	}
@@ -689,67 +565,53 @@ public class MainActivity extends Activity //implements View.OnClickListener
 		edit.putBoolean(key, value);
 		edit.commit();
 	}
-			
-		@ Override public 
-		void  setComponentEnabledSetting
-		(
-			ComponentName componentName
-			,
-			int newState
-			,
-			int flags
-		)
-		
+	//added color on enbled n disabled image when checkbox is clicked
+	public void enabledColor(){
+		im = (ImageView) findViewById(R.id.es_icon);
+		ColorFilter filterES = new PorterDuffColorFilter(
+		0x00ffffff | 0xff000000, 
+		PorterDuff.Mode.MULTIPLY);
+		im.setColorFilter(filterES);
+					
+		ImageView image = (ImageView) findViewById (R.id.es_icon);
+		image.setVisibility (View.VISIBLE);
+		image.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				throw new UnsupportedOperationException();
+				Intent fbload = new Intent
+				(Intent.ACTION_MAIN);
+				fbload.setComponent(new ComponentName(//"com.facebook.katana","com.facebook.katana.platform.FacebookAuthenticationActivity"
+				"com.estrongs.android.pop.cupcake","com.estrongs.android.pop.cupcake.view.FileExplorerActivity"
+				));
+				startActivity(fbload);
 			}
-
-		@ Override public 
-		int getComponentEnabledSetting
-		(
-			ComponentName componentName
-		)
-		
-			{
-				throw new UnsupportedOperationException();
+		});
+	}
+	public void disabledColor(){
+		im = (ImageView) findViewById(R.id.es_icon);
+		ColorFilter filterEs = new PorterDuffColorFilter(
+		Color.RED, 
+		//0x00c9c6c5 | 0xffc9c6c5,
+		PorterDuff.Mode.MULTIPLY);
+		im.setColorFilter(filterEs);
+		ImageView image = (ImageView) findViewById (R.id.es_icon);
+		image.setVisibility (View.VISIBLE);
+		image.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getApplicationContext(), "disabled",Toast.LENGTH_LONG).show();
 			}
-
-		@ Override public 
-		void  setApplicationEnabledSetting
-		(
-			String packageName
-			,
-			int newState
-			,
-			int flags
-		)
-			{
-				throw new UnsupportedOperationException();
-			}
-
-		@ Override public 
-		int getApplicationEnabledSetting
-		(
-			String packageName
-		)
-		
-			{
-				throw new UnsupportedOperationException();
-			}
-			
-			public void enabledColor(){
-					im = (ImageView) findViewById(R.id.es_icon);
-					ColorFilter filterES = new PorterDuffColorFilter(
-						0x00ffffff | 0xff000000
-						, 
-						PorterDuff.Mode.MULTIPLY);
-					im.setColorFilter(filterES);
-			}
-			public void disabledColor(){
-					im = (ImageView) findViewById(R.id.es_icon);
-					ColorFilter filterEs = new PorterDuffColorFilter(
-						Color.RED, 
-						PorterDuff.Mode.MULTIPLY);
-					im.setColorFilter(filterEs);
-			}
+		});
+	}
+	
 }
+/*if(Build.VERSION.SDK_INT < 19){
+						FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
+						ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
+						layoutParams.height = 0;
+					}
+				if(Build.VERSION.SDK_INT >= 21){
+						getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);;
+					}		*/
