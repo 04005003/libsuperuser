@@ -40,9 +40,9 @@ public class MainActivity extends Activity //implements View.OnClickListener
 	private int oldTheme;
 	//
 	//custom color
-		private ColorPanelView			
-		mOldColorPanelView;
-		//
+	private ColorPanelView			
+	mOldColorPanelView;
+	//
 	//added checkbox
 	CheckBox es_box;
 	//added bright color over image to show as disabled
@@ -54,14 +54,14 @@ public class MainActivity extends Activity //implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-			//theme change in prefs
-			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-			String lister = sharedPref.getString("theme_preference", "1");//1
-			oldTheme = Integer.parseInt(lister);
-			// Following options to change the Theme must precede setContentView().
-			toggleTheme();
-			//
-			openSUDialog();
+		//theme change in prefs
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		String lister = sharedPref.getString("theme_preference", "1");//1
+		oldTheme = Integer.parseInt(lister);
+		// Following options to change the Theme must precede setContentView().
+		toggleTheme();
+		//
+		openSUDialog();
 	}
 	
 	
@@ -121,9 +121,10 @@ public class MainActivity extends Activity //implements View.OnClickListener
 	{
 		try
 		{
-			ApplicationInfo info= getPackageManager().getApplicationInfo("com.estrongs.android.pop.cupcake", 0 );{
+			ApplicationInfo info= getPackageManager().getApplicationInfo("com.estrongs.android.pop.cupcake", 0 );
+			//{
 				
-			}
+			//}
 			return true;
 		}
 		
@@ -225,18 +226,42 @@ public class MainActivity extends Activity //implements View.OnClickListener
 								rootSession.addCommand(new String[]{
 									"pm disable com.estrongs.android.pop.cupcake"
 								});
-								//added color on enbled n disabled image when checkbox is clicked
-								disabledColor();
-								//
+								/*ComponentName componentToDisable =
+									new ComponentName(//"com.estrongs.android.pop.cupcake",
+													 // "com.estrongs.android.pop.cupcake.view.FileExplorerActivity"
+													  
+							" com.estrongs.android.pop.cupcake",
+							"com.estrongs.android.pop.cupcake.view.FileExplorerActivity"
+													  );
+
+								getPackageManager().setComponentEnabledSetting(
+									componentToDisable,
+									PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+									PackageManager.DONT_KILL_APP);*/
+							//added color on enbled n disabled image when checkbox is clicked
+							disabledColor();
+							//
 							savePreferences("CheckBox", es_box.isChecked());
 								
 						}
 						else{
 							//Toast.makeText(getApplicationContext(), "enabled es", Toast.LENGTH_SHORT).show();
-								rootSession.addCommand(new String[]{
-									//this is ES file manager that packageNAME
-										"pm enable com.estrongs.android.pop.cupcake"
+							rootSession.addCommand(new String[]{
+								//this is ES file manager that packageNAME
+									"pm enable com.estrongs.android.pop.cupcake"
 								});
+								/*ComponentName componentToDisable =
+									new ComponentName(//"com.estrongs.android.pop.cupcake",
+									// "com.estrongs.android.pop.cupcake.view.FileExplorerActivity"
+
+									" com.estrongs.android.pop.cupcake",
+									"com.estrongs.android.pop.cupcake.view.FileExplorerActivity"
+								);
+
+								getPackageManager().setComponentEnabledSetting(
+									componentToDisable,
+									PackageManager.COMPONENT_ENABLED_STATE_ENABLED ,
+									PackageManager.DONT_KILL_APP);*/
 								//added color on enbled n disabled image when checkbox is clicked
 								enabledColor();
 								//
@@ -370,33 +395,6 @@ public class MainActivity extends Activity //implements View.OnClickListener
 			e.printStackTrace ();
 		}
 	}
-		/*public void FBButtons(){
-				//((Button)findViewById(R.id.enable_fb)).
-				Button enable_button = (Button)findViewById(R.id.enable_fb);
-				enable_button.setText("enable");//R.string.disable_es);
-				enable_button.setOnClickListener(new View.OnClickListener(){
-							@Override
-							public void onClick(View v) {
-									rootSession.addCommand(new String[]{
-																   //this is ES file manager that packageNAME
-																""  // "pm enable com.estrongs.android.pop.cupcake"
-															   });
-									finish();// tgis is my test for my gif image 
-								}
-						});
-				Button disable_button = (Button)findViewById(R.id.disable_fb);
-				disable_button.setText("disable");//R.string.disable_fb);
-				disable_button.setOnClickListener(new View.OnClickListener(){
-							@Override
-							public void onClick(View v) {
-									rootSession.addCommand(new String[]{
-																  // "pm disable com.estrongs.android.pop.cupcake",
-																   ""
-															   });
-									finish();
-								}
-						});
-			}*/
 	//end of facebook
 	
 	//added menu for preference screen
@@ -416,11 +414,11 @@ public class MainActivity extends Activity //implements View.OnClickListener
 			startActivity(i);
 			return true;
 
-			/*case(R.id.about):
+			case(R.id.info):
 			// Actions for About page
-			Intent k = new Intent(this, Options.class);
+			Intent k = new Intent(this, about.class);
 			startActivity(k);
-			return true;*/
+			return true;
 
 			case(R.id.prefs):
 			// Actions for preferences page
@@ -445,14 +443,14 @@ public class MainActivity extends Activity //implements View.OnClickListener
 	public void onResume(){
 		super.onResume();
 		toggleTheme();
-		}
+	}
 
 	@Override
 	protected void onDestroy()
-		{
-			// TODO: Implement this method
-			super.onDestroy();
-		}
+	{
+		// TODO: Implement this method
+		super.onDestroy();
+	}
 	
 	public void toggleTheme()
 	{
@@ -509,16 +507,16 @@ public class MainActivity extends Activity //implements View.OnClickListener
 
 				View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
 				TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
-				mTitleTextView.setText("My Own Title");
+				mTitleTextView.setText("Frozen Apps");
 
-				ImageButton imageButton = (ImageButton) mCustomView.findViewById(R.id.imageButton);
+				/*ImageButton imageButton = (ImageButton) mCustomView.findViewById(R.id.imageButton);
 				
 				imageButton.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
 						Toast.makeText(getApplicationContext(), "Refresh Clicked!",Toast.LENGTH_LONG).show();
 					}
-				});
+				});*/
 
 				mActionBar.setCustomView(mCustomView);
 				mActionBar.setDisplayShowCustomEnabled(true);
@@ -586,6 +584,16 @@ public class MainActivity extends Activity //implements View.OnClickListener
 				"com.estrongs.android.pop.cupcake","com.estrongs.android.pop.cupcake.view.FileExplorerActivity"
 				));
 				startActivity(fbload);
+				/*ComponentName componentToDisable =
+					new ComponentName(
+					"com.estrongs.android.pop.cupcake",
+					"com.estrongs.android.pop.cupcake.view.FileExplorerActivity"
+				);
+
+				getPackageManager().setComponentEnabledSetting(
+					componentToDisable,
+					PackageManager.COMPONENT_ENABLED_STATE_ENABLED ,
+					PackageManager.DONT_KILL_APP);*/
 			}
 		});
 	}

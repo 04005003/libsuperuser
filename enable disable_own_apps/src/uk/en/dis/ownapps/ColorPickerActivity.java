@@ -11,7 +11,8 @@ import android.util.*;
 import android.view.*;
 import android.widget.*;
 
-public class ColorPickerActivity extends Activity implements OnColorChangedListener, View.OnClickListener {
+public class ColorPickerActivity extends Activity implements OnColorChangedListener, View.OnClickListener
+{
 
 	private ColorPickerView			mColorPickerView;
 	private ColorPanelView			mOldColorPanelView;

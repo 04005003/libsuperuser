@@ -30,7 +30,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
-        android:background="@null"
-        android:src="@android:drawable/ic_menu_rotate" />
+        android:background="@null"/>
+        android:src="@android:drawable/ic_menu_rotate" />-->
 
 </RelativeLayout>

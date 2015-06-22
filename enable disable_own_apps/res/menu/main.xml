@@ -12,6 +12,14 @@
         android:orderInCategory="5"
         android:showAsAction="ifRoom"
         android:title="about"/>-->
+	<item
+        android:id="@+id/info"
+        android:orderInCategory="5"
+        android:showAsAction="ifRoom"
+        android:title="info"
+		android:icon="@android:drawable/ic_menu_info_details"
+	/>
+	ic_menu_info_details
     <item
         android:id="@+id/prefs"
         android:orderInCategory="10"

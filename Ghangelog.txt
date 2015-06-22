@@ -23,6 +23,10 @@ instead of button gona add checkbox as its not worth having buttons if you dont 
 then add greyscale image so it looks like its disabled (done)
 proguard the app if i can using aide
 
+1.2.1
+all tabs in mainActivity are sorted so it looks neater(sort out more later on )
+added info dialog with changelog button inside
+added video on youtube
 
 1.2.0
 removed unwanted codes that are commented-out 
